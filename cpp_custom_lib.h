@@ -1,4 +1,6 @@
-ifndef cpp_custom_lib_h
+//Header library for C++, syntax is similar to C# for easy manipulation
+
+#ifndef cpp_custom_lib_h
 #define cpp_custom_lib_h
 #include <iostream>
 #include <fstream>
