@@ -1,4 +1,4 @@
-ifndef cpp_custom_lib_h
+#ifndef cpp_custom_lib_h
 #define cpp_custom_lib_h
 #include <iostream>
 #include <fstream>
