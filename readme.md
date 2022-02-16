@@ -10,7 +10,7 @@
 
 ### Cập nhật 15/2/2021
 - Namespace Custom: GetType(), Min(), Max().
-- Namespace String: Parse(), Split(), Sort(), Insert().
-- Namespace Double: Parse(), TryParse().
-- Namespace Int: Parse(), TryParse().
+- Namespace String: Parse(), Split(), Sort().
+- Namespace Double: Parse(),.
+- Namespace Int: Parse().
 - Namespace File: ReadFile(), WriteFile(), WriteFileMulti().
