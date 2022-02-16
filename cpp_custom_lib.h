@@ -216,12 +216,12 @@ public:
 		hour = lt.wHour; minute = lt.wMinute; second = lt.wSecond; weekday = lt.wDayOfWeek + 1;
 	}
 
-	DateTime(INT16 hour, int minute, int second) : hour(hour), minute(minute), second(second) {
+	/*DateTime(INT16 hour, int minute, int second) : hour(hour), minute(minute), second(second) {
 		SYSTEMTIME lt;
 		GetLocalTime(&lt);
 
 		day = lt.wDay; month = lt.wMonth; year = lt.wYear; weekday = lt.wDayOfWeek + 1;
-	}
+	}*/
 
 	void Now() {
 		SYSTEMTIME lt;
