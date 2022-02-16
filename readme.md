@@ -10,7 +10,7 @@
 - Thêm Class DateTime: DateTime(+3 overload), Now(), ToString(), ShortDay(), LongDay().
 - Thêm Namespace LongLong: Parse(), TryParse().
 - Namespace String: Parse(+3 overload), Insert().
-- Namespace Double: TryParse(),.
+- Namespace Double: TryParse().
 - Namespace Int: TryParse().
 
 ### Cập nhật 15/2/2021
