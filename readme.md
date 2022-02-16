@@ -8,6 +8,7 @@
 
 ### Cập nhật 16/2/2021
 - Thêm Class DateTime: DateTime(+4 overload), Now(), ToString(), ShortDay(), LongDay().
+- Thêm Namespace LongLong: Parse(), TryParse().
 - Namespace String: Insert().
 - Namespace Double: TryParse(),.
 - Namespace Int: TryParse().
@@ -15,6 +16,6 @@
 ### Cập nhật 15/2/2021
 - Namespace Custom: GetType(), Min(), Max().
 - Namespace String: Parse(), Split(), Sort().
-- Namespace Double: Parse(),.
+- Namespace Double: Parse().
 - Namespace Int: Parse().
 - Namespace File: ReadFile(), WriteFile(), WriteFileMulti().
