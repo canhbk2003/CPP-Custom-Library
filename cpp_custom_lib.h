@@ -216,7 +216,7 @@ public:
 		hour = lt.wHour; minute = lt.wMinute; second = lt.wSecond; weekday = lt.wDayOfWeek + 1;
 	}
 
-	DateTime(byte hour, int minute, int second) : hour(hour), minute(minute), second(second) {
+	DateTime(INT16 hour, int minute, int second) : hour(hour), minute(minute), second(second) {
 		SYSTEMTIME lt;
 		GetLocalTime(&lt);
 
