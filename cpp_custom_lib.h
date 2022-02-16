@@ -119,6 +119,22 @@ namespace Int {
 	}
 }
 
+namespace LongLong {
+	int Parse(string value) {
+		return stoll(value);
+	}
+
+	bool TryParse(string value, long long &out) {
+		string::const_iterator it = value.begin();
+		while (it != value.end() && isdigit(*it)) ++it;
+		if (!value.empty() && it == value.end()) {
+			out = Parse(value);
+			return true;
+		}
+		return false;
+	}
+}
+
 namespace File {
 	vector<string> ReadLine(string fileName) {
 		ifstream file;
