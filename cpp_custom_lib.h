@@ -120,7 +120,7 @@ namespace Int {
 }
 
 namespace LongLong {
-	int Parse(string value) {
+	long long Parse(string value) {
 		return stoll(value);
 	}
 
