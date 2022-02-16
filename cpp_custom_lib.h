@@ -7,6 +7,8 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <sstream>
+#include <windows.h>
 
 using namespace std;
 
@@ -78,17 +80,42 @@ namespace String {
 		}
 		return strOut;
 	}
+
+	void Insert(string& str, string insert_str, int start, int len_str) {
+		while (str.length() < len_str) str.insert(start, insert_str);
+	}
 }
 
 namespace Double {
 	double Parse(string value) {
 		return stod(value);
 	}
+
+	bool TryParse(string value, double& out) {
+		auto result = double();
+		auto i = std::istringstream(value);
+		i >> result;
+		if (!i.fail() && i.eof()) {
+			out = Parse(value);
+			return true;
+		}
+		return false;
+	}
 }
 
 namespace Int {
 	int Parse(string value) {
 		return stoi(value);
+	}
+
+	bool TryParse(string value, int& out) {
+		string::const_iterator it = value.begin();
+		while (it != value.end() && isdigit(*it)) ++it;
+		if (!value.empty() && it == value.end()) {
+			out = Parse(value);
+			return true;
+		}
+		return false;
 	}
 }
 
@@ -134,5 +161,67 @@ namespace File {
 		return true;
 	}
 }
+
+class DateTime {
+private:
+	string weekDayLong[7] = {
+		"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+	};
+	string weekDayShort[7] =  {
+		"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
+	};
+public:
+	int day, month, year, hour, minute, second, weekday;
+
+	DateTime() {
+		SYSTEMTIME lt;
+		GetLocalTime(&lt);
+
+		day = lt.wDay; month = lt.wMonth; year = lt.wYear; weekday = lt.wDayOfWeek + 1;
+		hour = lt.wHour; minute = lt.wMinute; second = lt.wSecond;
+	}
+
+	DateTime(int day, int month, int year, int hour, int minute, int second) :
+		day(day), month(month), year(year), hour(hour), minute(minute), second(second) {
+		SYSTEMTIME lt;
+		GetLocalTime(&lt);
+		weekday = lt.wDayOfWeek + 1;
+	}
+
+	DateTime(int day, int month, int year) : day(day), month(month), year(year) {
+		SYSTEMTIME lt;
+		GetLocalTime(&lt);
+
+		hour = lt.wHour; minute = lt.wMinute; second = lt.wSecond; weekday = lt.wDayOfWeek + 1;
+	}
+
+	DateTime(byte hour, int minute, int second) : hour(hour), minute(minute), second(second) {
+		SYSTEMTIME lt;
+		GetLocalTime(&lt);
+
+		day = lt.wDay; month = lt.wMonth; year = lt.wYear; weekday = lt.wDayOfWeek + 1;
+	}
+
+	void Now() {
+		SYSTEMTIME lt;
+		GetLocalTime(&lt);
+
+		hour = lt.wHour; minute = lt.wMinute; second = lt.wSecond;
+		day = lt.wDay; month = lt.wMonth; year = lt.wYear; weekday = lt.wDayOfWeek + 1;
+	}
+
+	string ToString() {
+		return to_string(weekday) + " " + to_string(day) + "/" + to_string(month) + "/" +
+			to_string(year) + " " + to_string(hour) + ":" + to_string(minute) + ":" + to_string(second);
+	}
+
+	string ShortDay() {
+		return weekDayShort[this->weekday-1];
+	}
+
+	string LongDay() {
+		return weekDayLong[this->weekday - 1];
+	}
+};
 
 #endif
