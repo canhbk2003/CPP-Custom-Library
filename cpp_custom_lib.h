@@ -45,6 +45,11 @@ namespace String {
 		string str(value);
 		return str;
 	}
+	
+	string Parse(char value[]) {
+		string str(value);
+		return str;
+	}
 
 	vector<string> Split(string str, string separator)
 	{
