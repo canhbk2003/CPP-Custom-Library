@@ -7,7 +7,7 @@
 - Có thể gán biến nếu hàm có giá trị trả về.
 
 ### Cập nhật 16/2/2021
-- Thêm Class DateTime: DateTime(+4 overload), Now(), ToString(), ShortDay(), LongDay().
+- Thêm Class DateTime: DateTime(+3 overload), Now(), ToString(), ShortDay(), LongDay().
 - Thêm Namespace LongLong: Parse(), TryParse().
 - Namespace String: Parse(+3 overload), Insert().
 - Namespace Double: TryParse(),.
