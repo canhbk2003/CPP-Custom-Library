@@ -6,6 +6,9 @@
 - Gọi: &lt;tên namespace&gt;::&lt;tên class (nếu có)&gt;::&lt;tên hàm&gt;
 - Có thể gán biến nếu hàm có giá trị trả về.
 
+### Cập nhật 21/2/2021
+- Namespace File: SaveClass(), ReadClassList().
+
 ### Cập nhật 16/2/2021
 - Thêm Class DateTime: DateTime(+3 overload), Now(), ToString(), ShortDay(), LongDay().
 - Thêm Namespace LongLong: Parse(), TryParse().
