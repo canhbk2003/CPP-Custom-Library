@@ -1,4 +1,5 @@
 //Header library for C++, syntax is similar to C# for easy manipulation
+//https://github.com/trietta1999/CPP-Custom-Library
 
 #ifndef cpp_custom_lib_h
 #define cpp_custom_lib_h
@@ -45,7 +46,7 @@ namespace String {
 		string str(value);
 		return str;
 	}
-	
+
 	string Parse(char value[]) {
 		string str(value);
 		return str;
@@ -170,8 +171,7 @@ namespace File {
 		return true;
 	}
 
-	bool WriteFileMulti(string fileName, enum std::_Iosb<int>::_Openmode ios_base,
-		vector<string> data) {
+	bool WriteFileMulti(string fileName, enum std::_Iosb<int>::_Openmode ios_base, vector<string> data) {
 		ofstream file;
 
 		file.open(fileName, ios_base);
@@ -180,6 +180,30 @@ namespace File {
 		for (writer = data.begin(); writer != data.end(); writer++) file << *writer << endl;
 		file.close();
 		return true;
+	}
+
+	template<class T>
+	void SaveClass(string fileName, enum std::_Iosb<int>::_Openmode ios_base, T object) {
+		ofstream file_obj;
+		file_obj.open(fileName, ios_base | ios_base::binary);
+		file_obj.write((char*)&object, sizeof(object));
+		file_obj.close();
+	}
+
+	template<class T>
+	vector<T> ReadClassList(string fileName, T &object) {
+		ifstream file_obj;
+		vector<T> _object;
+		file_obj.open(fileName, ios::in);
+		while (!file_obj.eof()) {
+			try {
+				_object.push_back(object);
+				file_obj.read((char*)&object, sizeof(object));
+			}
+			catch(int a) {}
+		}	
+		file_obj.close();
+		return _object;
 	}
 }
 
