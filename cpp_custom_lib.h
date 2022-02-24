@@ -130,7 +130,7 @@ namespace LongLong {
 		return stoll(value);
 	}
 
-	bool TryParse(string value, long long &out) {
+	bool TryParse(string value, long long& out) {
 		string::const_iterator it = value.begin();
 		while (it != value.end() && isdigit(*it)) ++it;
 		if (!value.empty() && it == value.end()) {
@@ -182,6 +182,12 @@ namespace File {
 		return true;
 	}
 
+	void WriteLine(string fileName, int lineNum, string data) {
+		auto read = ReadLine(fileName);
+		read.at(lineNum) = data;
+		WriteFileMulti(fileName, ios_base::out, read);
+	}
+
 	template<class T>
 	void SaveClass(string fileName, enum std::_Iosb<int>::_Openmode ios_base, T object) {
 		ofstream file_obj;
@@ -191,7 +197,7 @@ namespace File {
 	}
 
 	template<class T>
-	vector<T> ReadClassList(string fileName, T &object) {
+	vector<T> ReadClassList(string fileName, T& object) {
 		ifstream file_obj;
 		vector<T> _object;
 		file_obj.open(fileName, ios::in);
@@ -200,8 +206,8 @@ namespace File {
 				_object.push_back(object);
 				file_obj.read((char*)&object, sizeof(object));
 			}
-			catch(int a) {}
-		}	
+			catch (int a) {}
+		}
 		file_obj.close();
 		return _object;
 	}
@@ -212,7 +218,7 @@ private:
 	string weekDayLong[7] = {
 		"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
 	};
-	string weekDayShort[7] =  {
+	string weekDayShort[7] = {
 		"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
 	};
 public:
@@ -261,7 +267,7 @@ public:
 	}
 
 	string ShortDay() {
-		return weekDayShort[this->weekday-1];
+		return weekDayShort[this->weekday - 1];
 	}
 
 	string LongDay() {
