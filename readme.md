@@ -7,6 +7,7 @@
 - Có thể gán biến nếu hàm có giá trị trả về.
 
 ### Cập nhật 24/2/2022
+- Thêm Namespace Custom: GetCmdOutput().
 - Namespace File: WriteLine().
 
 ### Cập nhật 21/2/2022
