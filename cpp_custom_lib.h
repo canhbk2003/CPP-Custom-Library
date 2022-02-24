@@ -34,6 +34,18 @@ namespace Custom {
 			if (a[i + 1] > a[i]) max = a[i + 1];
 		return max;
 	}
+	
+	string GetCmdOutput(const char* cmd) {
+		shared_ptr<FILE> pipe(_popen(cmd, "r"), _pclose);
+		if (!pipe) return "ERROR";
+		char buffer[128];
+		string result = "";
+		while (!feof(pipe.get())) {
+			if (fgets(buffer, 128, pipe.get()) != NULL)
+				result += buffer;
+		}
+		return result;
+	}
 }
 
 namespace String {
