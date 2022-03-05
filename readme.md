@@ -6,6 +6,9 @@
 - Gọi: &lt;tên namespace&gt;::&lt;tên class (nếu có)&gt;::&lt;tên hàm&gt;
 - Có thể gán biến nếu hàm có giá trị trả về.
 
+### Cập nhật 6/3/2022
+- Xóa hàm trong Namespace File: SaveClass(), ReadClassList().
+
 ### Cập nhật 24/2/2022
 - Thêm Namespace Custom: GetCmdOutput().
 - Namespace File: WriteLine().
