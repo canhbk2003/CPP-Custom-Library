@@ -76,7 +76,7 @@ namespace String {
 			end = str.find(separator, start);
 		}
 		return sout;
-	}1
+	}
 
 	vector<string> Sort(vector<string> strVec) {
 		vector<string> strOut;
