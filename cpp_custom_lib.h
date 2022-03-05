@@ -34,7 +34,7 @@ namespace Custom {
 			if (a[i + 1] > a[i]) max = a[i + 1];
 		return max;
 	}
-	
+
 	string GetCmdOutput(const char* cmd) {
 		shared_ptr<FILE> pipe(_popen(cmd, "r"), _pclose);
 		if (!pipe) return "ERROR";
@@ -99,7 +99,7 @@ namespace String {
 		return strOut;
 	}
 
-	void Insert(string& str, string insert_str, int start, int len_str) {
+	void Insert(string& str, string insert_str, int start, unsigned int len_str) {
 		while (str.length() < len_str) str.insert(start, insert_str);
 	}
 }
@@ -198,30 +198,6 @@ namespace File {
 		auto read = ReadLine(fileName);
 		read.at(lineNum) = data;
 		WriteFileMulti(fileName, ios_base::out, read);
-	}
-
-	template<class T>
-	void SaveClass(string fileName, enum std::_Iosb<int>::_Openmode ios_base, T object) {
-		ofstream file_obj;
-		file_obj.open(fileName, ios_base | ios_base::binary);
-		file_obj.write((char*)&object, sizeof(object));
-		file_obj.close();
-	}
-
-	template<class T>
-	vector<T> ReadClassList(string fileName, T& object) {
-		ifstream file_obj;
-		vector<T> _object;
-		file_obj.open(fileName, ios::in);
-		while (!file_obj.eof()) {
-			try {
-				_object.push_back(object);
-				file_obj.read((char*)&object, sizeof(object));
-			}
-			catch (int a) {}
-		}
-		file_obj.close();
-		return _object;
 	}
 }
 
