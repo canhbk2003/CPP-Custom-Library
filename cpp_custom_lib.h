@@ -103,11 +103,15 @@ namespace String {
 		while (str.length() < len_str) str.insert(start, insert_str);
 	}
 
-	bool Replace(string& str, const string& from, const string& to) {
+	bool replaceCall(string& str, const string& from, const string& to) {
 		size_t start_pos = str.find(from);
 		if (start_pos == std::string::npos) return false;
 		str.replace(start_pos, from.length(), to);
 		return true;
+	}
+
+	void Replace(string& str, const string& from, const string& to) {
+		while (replaceCall(str, from, to));
 	}
 }
 
