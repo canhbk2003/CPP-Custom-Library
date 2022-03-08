@@ -102,6 +102,13 @@ namespace String {
 	void Insert(string& str, string insert_str, int start, unsigned int len_str) {
 		while (str.length() < len_str) str.insert(start, insert_str);
 	}
+
+	bool Replace(string& str, const string& from, const string& to) {
+		size_t start_pos = str.find(from);
+		if (start_pos == std::string::npos) return false;
+		str.replace(start_pos, from.length(), to);
+		return true;
+	}
 }
 
 namespace Double {
