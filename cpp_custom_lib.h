@@ -99,7 +99,8 @@ namespace String {
 		return strOut;
 	}
 
-	void Insert(string& str, string insert_str, int start, unsigned int len_str) {
+	void Insert(string& str, string insert_str, int start) {
+		unsigned int len_str = str.length() + insert_str.length();
 		while (str.length() < len_str) str.insert(start, insert_str);
 	}
 
