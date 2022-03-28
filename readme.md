@@ -6,6 +6,9 @@
 - Gọi: &lt;tên namespace&gt;::&lt;tên class (nếu có)&gt;::&lt;tên hàm&gt;
 - Có thể gán biến nếu hàm có giá trị trả về.
 
+### Cập nhật 29/3/2022
+- Sửa đổi tham số hàm String::Insert().
+
 ### Cập nhật 8/3/2022
 - Thêm Namespace String: Replace().
 
