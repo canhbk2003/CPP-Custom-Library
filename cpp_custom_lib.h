@@ -13,12 +13,27 @@
 
 using namespace std;
 
+/// <summary>
+/// Chứa các hàm cơ bản thường dùng nhất
+/// </summary>
 namespace Custom {
+	/// <summary>
+	/// Kiểm tra kiểu dữ liệu của biến, class, struct,...
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="value: kiểu dữ liệu bất kỳ"></param>
+	/// <returns>string</returns>
 	template<typename T>
 	string GetType(T value) {
 		return typeid(value).name();
 	}
 
+	/// <summary>
+	/// Tìm giá trị nhỏ nhất của mảng
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="a[]: kiểu dữ liệu bất kỳ"></param>
+	/// <returns>class T</returns>
 	template<typename T>
 	T Min(T a[]) {
 		T min = a[0];
@@ -27,6 +42,12 @@ namespace Custom {
 		return min;
 	}
 
+	/// <summary>
+	/// Tìm giá trị lớn nhất của mảng
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="a[]: kiểu dữ liệu bất kỳ"></param>
+	/// <returns>class T</returns>
 	template<typename T>
 	T Max(T a[]) {
 		T max = a[0];
@@ -35,6 +56,11 @@ namespace Custom {
 		return max;
 	}
 
+	/// <summary>
+	/// Thực thi lệnh trong CMD và lấy văn bản xuất ra từ nó
+	/// </summary>
+	/// <param name="cmd: lệnh cần chạy trong CMD"></param>
+	/// <returns>string</returns>
 	string GetCmdOutput(const char* cmd) {
 		shared_ptr<FILE> pipe(_popen(cmd, "r"), _pclose);
 		if (!pipe) return "ERROR";
@@ -48,22 +74,47 @@ namespace Custom {
 	}
 }
 
+/// <summary>
+/// Chứa các hàm xử lý về chuỗi
+/// </summary>
 namespace String {
+	/// <summary>
+	/// Chuyển đổi một số thuộc kiểu dữ liệu bất kỳ sang chuỗi
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="value: kiểu dữ liệu bất kỳ"></param>
+	/// <returns>string</returns>
 	template<typename T>
 	string Parse(T value) {
 		return to_string(value);
 	}
 
+	/// <summary>
+	/// Chuyển đổi mảng con trỏ ký tự sang chuỗi
+	/// </summary>
+	/// <param name="value"></param>
+	/// <returns>string</returns>
 	string Parse(const char* value) {
 		string str(value);
 		return str;
 	}
 
+	/// <summary>
+	/// Chuyển đổi mảng ký tự sang chuỗi
+	/// </summary>
+	/// <param name="value"></param>
+	/// <returns>string</returns>
 	string Parse(char value[]) {
 		string str(value);
 		return str;
 	}
 
+	/// <summary>
+	/// Tách chuỗi lớn thành các chuỗi con
+	/// </summary>
+	/// <param name="str: chuỗi cần tách"></param>
+	/// <param name="separator: dấu phân cách"></param>
+	/// <returns>vector&lt;string&gt;</returns>
 	vector<string> Split(string str, string separator)
 	{
 		int start = 0, i = 0;
@@ -77,7 +128,13 @@ namespace String {
 		}
 		return sout;
 	}
-	
+
+	/// <summary>
+	/// Tách chuỗi lớn thành các chuỗi con (tối ưu hơn)
+	/// </summary>
+	/// <param name="str: chuỗi cần tách"></param>
+	/// <param name="separator: dấu phân cách"></param>
+	/// <returns>vector&lt;string&gt;</returns>
 	vector<string> Split(string str, char separator)
 	{
 		vector<string> sout;
@@ -89,6 +146,11 @@ namespace String {
 		return sout;
 	}
 
+	/// <summary>
+	/// Sắp xếp các chuỗi theo thứ tự a-z
+	/// </summary>
+	/// <param name="strVec"></param>
+	/// <returns>vector&lt;string&gt;</returns>
 	vector<string> Sort(vector<string> strVec) {
 		vector<string> strOut;
 		vector<string> tempVec;
@@ -110,6 +172,12 @@ namespace String {
 		return strOut;
 	}
 
+	/// <summary>
+	/// Chèn thêm chuỗi vào vị trí bất kỳ
+	/// </summary>
+	/// <param name="str: chuỗi đầu vào"></param>
+	/// <param name="insert_str: chuỗi cần chèn"></param>
+	/// <param name="start: vị trí chèn"></param>
 	void Insert(string& str, string insert_str, int start) {
 		unsigned int len_str = str.length() + insert_str.length();
 		while (str.length() < len_str) str.insert(start, insert_str);
@@ -122,16 +190,36 @@ namespace String {
 		return true;
 	}
 
+	/// <summary>
+	/// Thay thế chuỗi tại vị trí bất kỳ
+	/// </summary>
+	/// <param name="str: chuỗi đầu vào"></param>
+	/// <param name="from: chuỗi cần thay thế"></param>
+	/// <param name="to: chuỗi thay thế"></param>
 	void Replace(string& str, const string& from, const string& to) {
 		while (replaceCall(str, from, to));
 	}
 }
 
+/// <summary>
+/// Chứa các hàm xử lý về double
+/// </summary>
 namespace Double {
+	/// <summary>
+	/// Chuyển đổi chuỗi thành double \
+	/// </summary>
+	/// <param name="value"></param>
+	/// <returns>double</returns>
 	double Parse(string value) {
 		return stod(value);
 	}
 
+	/// <summary>
+	/// Kiểm tra tính hợp lệ khi chuyển đổi chuỗi thành double
+	/// </summary>
+	/// <param name="value: chuỗi đầu vào"></param>
+	/// <param name="out: double đầu ra"></param>
+	/// <returns>true: nếu chuỗi đầu vào hợp lệ</returns>
 	bool TryParse(string value, double& out) {
 		auto result = double();
 		auto i = std::istringstream(value);
@@ -144,11 +232,25 @@ namespace Double {
 	}
 }
 
+/// <summary>
+/// Chứa các hàm xử lý về số nguyên
+/// </summary>
 namespace Int {
+	/// <summary>
+	/// Chuyển đổi chuỗi thành số nguyên
+	/// </summary>
+	/// <param name="value"></param>
+	/// <returns>int</returns>
 	int Parse(string value) {
 		return stoi(value);
 	}
 
+	/// <summary>
+	/// Kiểm tra tính hợp lệ khi chuyển đổi chuỗi thành số nguyên
+	/// </summary>
+	/// <param name="value: chuỗi đầu vào"></param>
+	/// <param name="out: int đầu ra"></param>
+	/// <returns>true: nếu chuỗi đầu vào hợp lệ</returns>
 	bool TryParse(string value, int& out) {
 		string::const_iterator it = value.begin();
 		while (it != value.end() && isdigit(*it)) ++it;
@@ -160,11 +262,25 @@ namespace Int {
 	}
 }
 
+/// <summary>
+/// Chứa các hàm xử lý về số nguyên dài
+/// </summary>
 namespace LongLong {
+	/// <summary>
+	/// Chuyển đổi chuỗi thành longlong
+	/// </summary>
+	/// <param name="value"></param>
+	/// <returns></returns>
 	long long Parse(string value) {
 		return stoll(value);
 	}
 
+	/// <summary>
+	/// Kiểm tra tính hợp lệ khi chuyển đổi chuỗi thành longlong
+	/// </summary>
+	/// <param name="value: chuỗi đầu vào"></param>
+	/// <param name="out: longlong đầu ra"></param>
+	/// <returns>true: nếu chuỗi đầu vào hợp lệ</returns>
 	bool TryParse(string value, long long& out) {
 		string::const_iterator it = value.begin();
 		while (it != value.end() && isdigit(*it)) ++it;
@@ -176,11 +292,18 @@ namespace LongLong {
 	}
 }
 
+/// <summary>
+/// Chứa các hàm xử lý về tệp
+/// </summary>
 namespace File {
+	/// <summary>
+	/// Đọc chuỗi từng hàng trong tệp
+	/// </summary>
+	/// <param name="fileName"></param>
+	/// <returns>vector&lt;string&gt;</returns>
 	vector<string> ReadLine(string fileName) {
 		ifstream file;
 		vector<string> read;
-
 		file.open(fileName);
 		if (!file) {
 			read.push_back("No File");
@@ -192,10 +315,16 @@ namespace File {
 			read.push_back(line);
 		}
 		file.close();
-
 		return read;
 	}
 
+	/// <summary>
+	/// Ghi dữ liệu ra tệp
+	/// </summary>
+	/// <param name="fileName: tên tệp"></param>
+	/// <param name="ios_base: chế độ ghi"></param>
+	/// <param name="data: dữ liệu chuỗi"></param>
+	/// <returns>true: nếu ghi thành công</returns>
 	bool WriteFile(string fileName, enum std::_Iosb<int>::_Openmode ios_base, string data) {
 		ofstream file;
 
@@ -206,9 +335,15 @@ namespace File {
 		return true;
 	}
 
+	/// <summary>
+	/// Ghi dữ liệu nhiều hàng ra tệp
+	/// </summary>
+	/// <param name="fileName: tên tệp"></param>
+	/// <param name="ios_base: chế độ ghi"></param>
+	/// <param name="data: vector chuỗi"></param>
+	/// <returns>true: nếu ghi thành công</returns>
 	bool WriteFileMulti(string fileName, enum std::_Iosb<int>::_Openmode ios_base, vector<string> data) {
 		ofstream file;
-
 		file.open(fileName, ios_base);
 		if (!file) return false;
 		vector<string>::iterator writer;
@@ -217,6 +352,12 @@ namespace File {
 		return true;
 	}
 
+	/// <summary>
+	/// Ghi ra tệp dữ liệu tại hàng bất kỳ
+	/// </summary>
+	/// <param name="fileName: tên tệp"></param>
+	/// <param name="lineNum: hàng cần ghi"></param>
+	/// <param name="data: dữ liệu chuỗi"></param>
 	void WriteLine(string fileName, int lineNum, string data) {
 		auto read = ReadLine(fileName);
 		read.at(lineNum) = data;
@@ -224,6 +365,9 @@ namespace File {
 	}
 }
 
+/// <summary>
+/// Class lưu và xử lý về thời gian
+/// </summary>
 class DateTime {
 private:
 	string weekDayLong[7] = {
@@ -264,6 +408,9 @@ public:
 		day = lt.wDay; month = lt.wMonth; year = lt.wYear; weekday = lt.wDayOfWeek + 1;
 	}*/
 
+	/// <summary>
+	/// Lấy thời gian hiện tại
+	/// </summary>
 	void Now() {
 		SYSTEMTIME lt;
 		GetLocalTime(&lt);
@@ -272,15 +419,27 @@ public:
 		day = lt.wDay; month = lt.wMonth; year = lt.wYear; weekday = lt.wDayOfWeek + 1;
 	}
 
+	/// <summary>
+	/// Chuyển thời gian thành chuỗi dễ đọc
+	/// </summary>
+	/// <returns></returns>
 	string ToString() {
 		return to_string(weekday) + " " + to_string(day) + "/" + to_string(month) + "/" +
 			to_string(year) + " " + to_string(hour) + ":" + to_string(minute) + ":" + to_string(second);
 	}
 
+	/// <summary>
+	/// Hiển thị thứ trong tuần dạng chuỗi ngắn
+	/// </summary>
+	/// <returns>string</returns>
 	string ShortDay() {
 		return weekDayShort[this->weekday - 1];
 	}
 
+	/// <summary>
+	/// Hiển thị thứ trong tuần dạng chuỗi dài
+	/// </summary>
+	/// <returns>string</returns>
 	string LongDay() {
 		return weekDayLong[this->weekday - 1];
 	}
