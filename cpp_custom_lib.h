@@ -22,7 +22,7 @@ namespace Custom {
 	template<typename T>
 	T Min(T a[]) {
 		T min = a[0];
-		for (int i = 0; i < sizeof(a) - 1; i++)
+		for (int i = 0; i < (sizeof(a) / sizeof(T)) - 1; i++)
 			if (a[i + 1] < a[i]) min = a[i + 1];
 		return min;
 	}
@@ -30,7 +30,7 @@ namespace Custom {
 	template<typename T>
 	T Max(T a[]) {
 		T max = a[0];
-		for (int i = 0; i < sizeof(a) - 1; i++)
+		for (int i = 0; i < (sizeof(a) / sizeof(T)) - 1; i++)
 			if (a[i + 1] > a[i]) max = a[i + 1];
 		return max;
 	}
