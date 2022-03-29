@@ -1,7 +1,8 @@
 # Tính năng
 - Thư viện header cho C++, được viết với cú pháp gần giống với C#.
 - Sẽ được cập nhật thường xuyên.
-- Góp ý chỉnh sửa, vấn đề, lỗi: https://docs.google.com/spreadsheets/d/1daUnzLGA25gMm7cQyPbCJFuH5yH6oa1xkdywSWb6cQo/edit?usp=sharing
+- Góp ý chỉnh sửa, vấn đề, lỗi:
+https://docs.google.com/spreadsheets/d/1daUnzLGA25gMm7cQyPbCJFuH5yH6oa1xkdywSWb6cQo/edit?usp=sharing
 
 ### Cách sử dụng:
 - Gọi: &lt;tên namespace&gt;::&lt;tên class (nếu có)&gt;::&lt;tên hàm&gt;
