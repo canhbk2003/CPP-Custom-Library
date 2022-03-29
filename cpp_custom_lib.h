@@ -77,6 +77,17 @@ namespace String {
 		}
 		return sout;
 	}
+	
+	vector<string> Split(string str, char separator)
+	{
+		vector<string> sout;
+		istringstream ss(str);
+		string token;
+		while (std::getline(ss, token, separator)) {
+			sout.push_back(token);
+		}
+		return sout;
+	}
 
 	vector<string> Sort(vector<string> strVec) {
 		vector<string> strOut;
