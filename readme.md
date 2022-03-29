@@ -12,7 +12,7 @@
 - Chia ra 2 file .h và .cpp, không cần phải đặt tùy chọn Linker /FORCE:MULTIPLE trong Visual Studio.
 
 ### Cập nhật 29/3/2022
-- **Thêm chú thích cách sử dụng các namespace, class và hàm.**
+- ***Thêm chú thích cách sử dụng các namespace, class và hàm.***
 - Overload thêm hàm trong Namespace String: Split().
 - Sửa đổi về sizeof của hàm trong Namespace Custom: Min(), Max().
 - Sửa đổi tham số hàm Namespace String: Insert().
