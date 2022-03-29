@@ -6,6 +6,10 @@
 - Gọi: &lt;tên namespace&gt;::&lt;tên class (nếu có)&gt;::&lt;tên hàm&gt;
 - Có thể gán biến nếu hàm có giá trị trả về.
 
+### Cập nhật sắp tới
+- Thêm chú thích cách sử dụng các hàm.
+- Chia ra 2 file .h và .cpp, không cần phải đặt tùy chọn Linker /FORCE:MULTIPLE trong Visual Studio.
+
 ### Cập nhật 29/3/2022
 - Sửa đổi tham số hàm String::Insert().
 
